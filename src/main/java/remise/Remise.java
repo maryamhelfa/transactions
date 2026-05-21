@@ -1,5 +1,5 @@
 package remise;
 
 public interface Remise {
-    double calculerRemise(double montant);
+    double calculerRemise(double montant) throws RemiseException;
 }

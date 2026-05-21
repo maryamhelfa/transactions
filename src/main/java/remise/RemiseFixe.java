@@ -6,7 +6,10 @@ import org.springframework.stereotype.Component;
 public class RemiseFixe implements Remise {
 
     @Override
-    public double calculerRemise(double montant) {
+    public double calculerRemise(double montant) throws RemiseException {
+        if (montant <= 0) {
+            throw new RemiseException("Montant doit être > 0");
+        }
         return 50;
     }
 }

@@ -15,7 +15,7 @@ public class RemiseRepository {
     }
 
     public List<RemiseEntity> findAll() {
-        String sql = "SELECT * FROM REMISE_ENTITY";//taux;table a objet     h
+        String sql = "SELECT * FROM REMISE_ENTITY";
 
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
             RemiseEntity r = new RemiseEntity();

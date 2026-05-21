@@ -1,14 +1,13 @@
 package remise;
 
 public class TransactionDTO {
-//l sert à recevoir le montant envoyé par l’API REST.
+
     private double montant;
+    private Long userId;
 
-    public double getMontant() {
-        return montant;
-    }
+    public double getMontant() { return montant; }
+    public void setMontant(double montant) { this.montant = montant; }
 
-    public void setMontant(double montant) {
-        this.montant = montant;
-    }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 }

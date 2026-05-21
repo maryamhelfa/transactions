@@ -13,10 +13,22 @@ public class main {
         Facture f = context.getBean(Facture.class);
         TransactionService ts = context.getBean(TransactionService.class);
 
-        f.afficherFacture(2000);
+        // try-catch sur afficherFacture
+        try {
+            f.afficherFacture(2000);
+        } catch (Exception e) {
+            System.err.println("Erreur afficherFacture : " + e.getMessage());
+        }
 
-        Transaction t = ts.save(3000, 2700, null);
-        ts.update(t.getId(), 2500);
-        ts.deleteById(t.getId());
+        // try-catch sur save
+        try {
+            Transaction t = ts.save(3000, 2700, null);
+            if (t != null) {
+                ts.update(t.getId(), 2500.0);
+                ts.deleteById(t.getId());
+            }
+        } catch (Exception e) {
+            System.err.println("Erreur transaction : " + e.getMessage());
+        }
     }
 }

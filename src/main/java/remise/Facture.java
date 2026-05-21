@@ -18,15 +18,19 @@ public class Facture {
     private TransactionService transactionService;
 
     public void afficherFacture(double montant) {
+        try {
+            double r = remise.calculerRemise(montant);
+            double total = montant - r;
 
-        double r = remise.calculerRemise(montant);
-        double total = montant - r;
+            System.out.println("Montant initial : " + montant);
+            System.out.println("Remise : " + r);
+            System.out.println("Total : " + total);
 
-        System.out.println("Montant initial : " + montant);
-        System.out.println("Remise : " + r);
-        System.out.println("Total : " + total);
+            RemiseEntity remiseEntity = remiseRepository.findByMontant(montant);
+            transactionService.save(montant, total, remiseEntity);
 
-        RemiseEntity remiseEntity = remiseRepository.findByMontant(montant);
-        transactionService.save(montant, total, remiseEntity);
+        } catch (RemiseException e) {
+            System.err.println("Erreur remise dans Facture : " + e.getMessage());
+        }
     }
 }

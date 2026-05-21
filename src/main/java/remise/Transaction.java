@@ -9,6 +9,7 @@ public class Transaction {
     private double montantAvant;
     private double montantApres;
     private RemiseEntity remise;
+    private User user;
 
     public Transaction() {
         this.date = LocalDateTime.now();
@@ -27,4 +28,7 @@ public class Transaction {
 
     public RemiseEntity getRemise() { return remise; }
     public void setRemise(RemiseEntity remise) { this.remise = remise; }
+
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

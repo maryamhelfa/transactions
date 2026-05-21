@@ -10,7 +10,7 @@ public class RemiseDb implements Remise {
     private RemiseRepository repository;
 
     @Override
-    public double calculerRemise(double montant) {
+    public double calculerRemise(double montant) throws RemiseException {
         if (montant <= 0) {
             throw new RemiseException("Montant doit être > 0");
         }
